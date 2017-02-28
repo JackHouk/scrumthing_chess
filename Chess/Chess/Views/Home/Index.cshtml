@@ -104,6 +104,24 @@
                 game.update();
                 game.draw();
             }, frameTime);
+
+            $("#canvas").click(function (event) {
+                var totalOffsetX = 0;
+                var totalOffsetY = 0;
+                var canvasX = 0;
+                var canvasY = 0;
+                var currentElement = this;
+
+                do {
+                    totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+                    totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+                }
+                while (currentElement = currentElement.offsetParent)
+
+                canvasX = event.pageX - totalOffsetX;
+                canvasY = event.pageY - totalOffsetY;
+                alert("X: " + canvasX + "\nY: " + canvasY)
+            })
         });
 
     </script>
