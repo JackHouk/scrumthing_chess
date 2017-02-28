@@ -210,15 +210,14 @@ function Game()
         var square = this.board.grid[x][y];
 		var piece = square.piece;
         var isValidMove = false;
-
-        // Check if this square is in our list of valid moves.
-        for (var i = 0; i < this.validMoves.length; i++)
-        {
-            if (this.validMoves[i].x == x &&
-                this.validMoves[i].y == y)
-            {
-                isValidMove = true;
-                break;
+        if (this.validMoves) {
+            // Check if this square is in our list of valid moves.
+            for (var i = 0; i < this.validMoves.length; i++) {
+                if (this.validMoves[i].x == x &&
+                    this.validMoves[i].y == y) {
+                    isValidMove = true;
+                    break;
+                }
             }
         }
 
