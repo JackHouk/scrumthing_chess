@@ -160,29 +160,37 @@ function ChessPiece(pieceType, team, x, y) {
                 if (board.getSquare(x + i, y).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x + i, y).piece.team != this.team)
+                        moves.push(new Move(x + i, y));
                 }
                 else
+                    moves.push(new Move(x + i, y));
             }
             if (!q2 && x - i > -1) {
                 if (board.getSquare(x - i, y).hasPiece()) {
                     q2 = true;
                     if (board.getSquare(x - i, y).piece.team != this.team)
+                        moves.push(new Move(x - i, y));
                 }
                 else
+                    moves.push(new Move(x - i, y));
             }
             if (!q3 && y - i > -1) {
                 if (board.getSquare(x, y - i).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x, y - i).piece.team != this.team)
+                        moves.push(new Move(x, y - i));
                 }
                 else
+                    moves.push(new Move(x, y - i));
             }
             if (!q4 && y + i < 8) {
                 if (board.getSquare(x, y + i).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x, y + i).piece.team != this.team)
+                        moves.push(new Move(x, y + i));
                 }
                 else
+                    moves.push(new Move(x, y + i));
             }
         }
         return moves;
@@ -202,29 +210,37 @@ function ChessPiece(pieceType, team, x, y) {
                 if (board.getSquare(x + i, y + i).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x + i, y + i).piece.team != this.team)
+                        moves.push(new Move(x + i, y + i));
                 }
                 else
+                    moves.push(new Move(x + i, y + i));
             }
             if (!q2 && x - i > -1 && y + i < 8) {
                 if (board.getSquare(x - i, y + i).hasPiece()) {
                     q2 = true;
                     if (board.getSquare(x - i, y + i).piece.team != this.team)
+                        moves.push(new Move(x - i, y + i));
                 }
                 else
+                    moves.push(new Move(x - i, y + i));
             }
             if (!q3 && x - i > -1 && y - i > -1) {
                 if (board.getSquare(x - i, y - i).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x - i, y - i).piece.team != this.team)
+                        moves.push(new Move(x - i, y - i));
                 }
                 else
+                    moves.push(new Move(x - i, y - i));
             }
             if (!q4 && x + i < 8 && y - i > -1) {
                 if (board.getSquare(x + i, y - i).hasPiece()) {
                     q1 = true;
                     if (board.getSquare(x + i, y - i).piece.team != this.team)
+                        moves.push(new Move(x + i, y - i));
                 }
                 else
+                    moves.push(new Move(x + i, y - i));
             }
         }
         return moves;
@@ -238,7 +254,9 @@ function ChessPiece(pieceType, team, x, y) {
             for (var j = y - 2; j <= y + 2; j++) {
                 if (this.validMove(i, j)) {
                     if (!board.getSquare(i, j).hasPiece())
+                        moves.push(new Move(i, j));
                     else if (board.geSquare(i, j).piece.team != this.team)
+                        moves.push(new Move(i, j));
                 }
             }
         }
@@ -251,28 +269,36 @@ function ChessPiece(pieceType, team, x, y) {
         if (this.team == Teams.black) {
 
             if (!board.getSquare(x, y + 1).hasPiece()) {
+                moves.push(new Move(x, y + 1));
             }
 
             if (!board.getSquare(x, y + 2).hasPiece() && this.validMove(x, y + 2)) {
+                moves.push(new Move(x, y + 2));
             }
 
             if (board.getSquare(x - 1, y + 1).hasPiece() && board.getSquare(x - 1, y + 1).piece.team != this.team) {
+                moves.push(new Move(x - 1, y + 1));
             }
 
             if (board.getSquare(x + 1, y + 1).hasPiece() && board.getSquare(x - 1, y + 1).piece.team != this.team) {
+                moves.push(new Move(x - 1, y + 1));
             }
         }
         else if (this.team == Teams.white) {
             if (!board.getSquare(x, y - 1).hasPiece()) {
+                moves.push(new Move(x, y - 1));
             }
 
             if (!board.getSquare(x, y - 2).hasPiece() && this.validMove(x, y + 2)) {
+                moves.push(new Move(x, y - 2));
             }
 
             if (board.getSquare(x - 1, y - 1).hasPiece() && board.getSquare(x - 1, y + 1).piece.team != this.team) {
+                moves.push(new Move(x - 1, y - 1));
             }
 
             if (board.getSquare(x + 1, y - 1).hasPiece() && board.getSquare(x - 1, y + 1).piece.team != this.team) {
+                moves.push(new Move(x - 1, y - 1));
             }
         }
     }
@@ -285,7 +311,9 @@ function ChessPiece(pieceType, team, x, y) {
             for (var j = y - 1; j <= y + 1; j++) {
                 if (board.getSquare(x + i, y + j).hasPiece() && this.validMove(x + i, y + j))
                     if (board.getSquare(x + i, y + j).piece.team != this.team)
+                        moves.push(new Move(x + i, y + j));
                     else if (this.validMove(x + i, y + j))
+                        moves.push(new Move(x + i, y + j));
             }
         }
         return moves;
